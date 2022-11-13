@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>instanceOf</title>
+</head>
+<body>
+    <script>
+        // y目标：
+        // class Test{}
+        // const test = new Test()
+        // console.log(test instanceof Test)
+        // console.log(_instanceof(test,Test))
+        // 验证：arr.__proto__===Array.prototype
+
+        const _instanceof = (target, Fn) => {
+            let proto = target.__proto__
+            let prototype = Fn.prototype
+            while(true) {
+                if(proto === Fn.prototype) return true
+                if(proto === null) return false
+                proto = proto.__proto__
+            }
+        }
+        
+
+
+
+
+    </script>
+</body>
+</html>

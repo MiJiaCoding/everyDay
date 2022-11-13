@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // "use strict";
+       
+        function func(a) { 
+            arguments[0] = 99;   // 更新了arguments[0] 同样更新了a
+            console.log(a);
+        }
+        func(10); // 99
+ 
+// // 并且
+ 
+//         function func(a) { 
+//             a = 99;              // 更新了a 同样更新了arguments[0] 
+//             console.log(arguments[0]);
+//         }
+//         func(10); // 99
+
+
+
+        // function func(a = 55) { 
+        //     arguments[0] = 99; 
+        //     console.log(a);
+        // }
+        // func(10); // 10
+
+//
+ 
+        // function func(a = 55) { 
+        //     a = 99; // updating a does not also update arguments[0]
+        //     console.log(arguments[0]);
+        // }
+        // func(10); // 10
+        
+        
+        // function func(a = 55) { 
+        //     console.log(arguments[0]);  
+        // }
+        // func(); // undefined
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -63,6 +63,41 @@
         console.log(teacher instanceof Array)
 
 
+
+        function Car(bran) {
+            this.brand = bran
+            console.log(this);
+        }
+        Car.prototype.run=function(){
+            console.log(this);
+        }
+        var c1 = new Car('五菱宏光')
+        // var c2 = new Car('长城皮卡')
+        c1.run()
+        // c2.run()
+
+
+        function Father(name, age) {
+        this.name = name
+        this.age = age
+        // this.speak()
+        }
+        Father.prototype.speak = function () {
+            console.log('哈哈哈')
+        }
+        function Son(name, age, score) {
+            Father.call(this, name, age)
+            this.score = score
+        }
+        Son.prototype = new Father()
+        Son.prototype.constructor = Son
+        Son.prototype.exam = function () {
+            console.log('我的成绩不错')
+        }
+        var son = new Son('grh', 21, 100)
+        console.log(son)
+
+
     </script>
 </body>
 </html>
