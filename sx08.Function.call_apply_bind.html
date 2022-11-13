@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function.call</title>
+</head>
+<body>
+    <script>
+        Function.prototype._call=function(){
+            console.log("arguments:",arguments)
+        }
+        function fn(a,b){
+            console.log("a:",a)
+            console.log("b:",b)
+            console.log("this:",this)
+            return 'hello'
+        }
+        const res=fn._call(fn,{x:10},20,30)
+        console.log(res)
+
+
+    </script>
+    
+</body>
+</html>

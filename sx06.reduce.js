@@ -1,46 +1,31 @@
-// let arr=[1,2,3,4,5]
+let arr=[1,2,3,4,5]
 //对initValue的判断不能的单纯的判断是否为undefined，因为如果传入undefined，reduce也会将其作为initValue进行计算
 // let res=arr.reduce((pre,cur)=>{
 //     return pre+cur
 // },undefined)
 
 
-// Array.prototype._reduce=function(fn,initValue){
-//     if(Object.prototype.toString.call(fn)!=="[object Function]"){
-//         throw new Error('current params is not correct')
-//     }
-//     let arr=this
-//     let initIndex
-//     let acc
-//     initIndex = arguments.length===1?1:0 //传入参数长度为1，说明没有传入initValue 此时会自动把数组第一个元素arr[0]作为acc，把数组第二个元素arr[1]作为initValue，所以这个initIndex需要这么设置
-//     acc = arguments.length===1?arr[0]:initValue
-//     for(let i=initIndex;i<arr.length;i++){
-//         acc=fn(acc,arr[i],i,arr)//fn有四个参数 分别是pre,cur,index,array
-//     }
-//     return acc
-// }
+Array.prototype._reduce=function(fn,initValue){
+    if(Object.prototype.toString.call(fn)!=="[object Function]"){
+        throw new Error('current params is not correct')
+    }
+    let arr=this
+    let initIndex
+    let acc
+    initIndex = arguments.length===1?1:0 //传入参数长度为1，说明没有传入initValue 此时会自动把数组第一个元素arr[0]作为acc，把数组第二个元素arr[1]作为initValue，所以这个initIndex需要这么设置
+    acc = arguments.length===1?arr[0]:initValue
+    for(let i=initIndex;i<arr.length;i++){
+        acc=fn(acc,arr[i],i,arr)//fn有四个参数 分别是pre,cur,index,array
+    }
+    return acc
+}
 
-// //下面这个没考虑到initValue 直接给一个undefined
-// Array.prototype._reduce = function(fn, prev) {
-//     for(let i=0 ; i<this.length ; i++) {
-//         if(prev === undefined) {
-//             prev = fn(this[i], this[i+1], i+1, this)
-//                 ++i
-//         } else {
-//             prev = fn(prev, this[i], i, this)
-//         }
-//     }
-//     return prev
-// }
-
-// let arr=[1,2,3,4,5]
-
-// let res=arr._reduce((pre,cur,index,array)=>{
-//     return pre+cur
-// },undefined)
-let res=arr.reduce((pre,cur,index,array)=>{
+let res=arr._reduce((pre,cur,index,array)=>{
     return pre+cur
 },undefined)
+// let res=arr.reduce((pre,cur,index,array)=>{
+//     return pre+cur
+// },undefined)
 console.log(res)
 // arr.reduce()
 

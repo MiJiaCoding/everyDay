@@ -97,20 +97,6 @@ Object.prototype.toString.call(new class {});    // => "[object Object]"
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 参考资料：
 
 https://zhuanlan.zhihu.com/p/118793721
