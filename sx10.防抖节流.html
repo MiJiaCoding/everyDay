@@ -14,36 +14,54 @@
         防抖后的input:<input>
     </div>
     <script>
-        //模拟一段ajax请求
-        function ajax(content) {
-        console.log('ajax request ' + content)
-        }
+        // //模拟一段ajax请求
+        // function ajax(content) {
+        // console.log('ajax request ' + content)
+        // }
 
-        let inputa = document.getElementById('unDebounce')
+        // let inputa = document.getElementById('unDebounce')
 
-        inputa.addEventListener('keyup', function (e) {
-            ajax(e.target.value)
-        })
+        // inputa.addEventListener('keyup', function (e) {
+        //     ajax(e.target.value)
+        // })
        
 
-        function debounce(fun,delay){
-            return function(args){
-                let that=this
-                let _args=args
-                clearTimeout(fun.id)
-                fun.id=setTimeout(function(){
-                    fun.call(that,_args)
-                    console.log(fun)
-                    console.log(fun.id)
+        // function debounce(fun,delay){
+        //     return function(args){
+        //         let that=this
+        //         let _args=args
+        //         clearTimeout(fun.id)
+        //         fun.id=setTimeout(function(){
+        //             fun.call(that,_args)
+        //             console.log(fun)
+        //             console.log(fun.id)
+        //         },delay)
+        //     }
+        // }
+        // let inputb = document.getElementById('debounce')
+        // let debounceAjax = debounce(ajax,500)
+
+        // inputb.addEventListener('keyup',e=>{
+        //     debounceAjax(e.target.value)
+        // })
+        function debounce(fn,delay){
+            let timer = null //闭包
+            return function (){
+                if(timer){
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(()=>{
+                   fn && fn() //箭头函数 this网上找，找到debounce 里面有 fn
                 },delay)
+                // timer = setTimeout(({
+                //     fn() //此时this指向window ，无fn 会报错
+                // }),delay)
             }
         }
-        let inputb = document.getElementById('debounce')
-        let debounceAjax = debounce(ajax,500)
-
-        inputb.addEventListener('keyup',e=>{
-            debounceAjax(e.target.value)
-        })
+        function func(){
+            console.log("发送请求")
+        }
+        document.getElementById("debounce").oninput=debounce(func,500)
     </script>
 </body>
 </html>

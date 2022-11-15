@@ -8,19 +8,66 @@
 </head>
 <body>
     <script>
-        Function.prototype._call=function(){
-            console.log("arguments:",arguments)
+        Function.prototype._call=function(obj,...args){
+            obj=obj?Object(obj):window //obj参数传入，就将其转换成对象！ 
+            const fn=Symbol('test1') // 属性唯一，所以用Symbol
+            obj[fn]=this
+            const res = obj[fn](...args)
+            delete obj[fn]
+            return res
         }
-        function fn(a,b){
-            console.log("a:",a)
-            console.log("b:",b)
-            console.log("this:",this)
-            return 'hello'
+        var a=1
+        const obj={
+            a:2,
         }
-        const res=fn._call(fn,{x:10},20,30)
-        console.log(res)
+        function fn1(b,c){
+            console.log(this.a,b,c)
+        }
+        console.log("call和_call")
+        console.log("无任何参数,默认指向window:")
+        fn1.call()
+        fn1._call()
+        console.log("有参数,但不是对象，（这里用数值1）:")
+        fn1.call(1,2,33)
+        fn1._call(1,2,33)
+        console.log("有参数,传入的也是对象:")
+        fn1.call(obj,2,33)
+        fn1._call(obj,2,33)
+
+        
+
+        Function.prototype._apply=function(obj,args=[]){
+            obj=obj?Object(obj):window
+            const fn=Symbol('test2')
+            obj[fn]=this
+            const res=obj[fn](...args)
+            delete obj[fn]
+            return res
+        }
+        console.log("apply和_apply:")
+        fn1.apply()
+        fn1._apply()
+        fn1.apply(1,[2,3])
+        fn1._apply(1,[2,3])
+        fn1.apply(obj,[2,3])
+        fn1._apply(obj,[2,3])
 
 
+
+        Function.prototype._bind=function(obj,...args){
+            const fn=this
+            return function(...args2){
+                return fn._call(obj,...args.concat(args2))
+            }
+        }
+        function fn2(...args){
+            console.log(this.a,...args)
+        }
+        console.log("bind和_bind:")
+        fn2.bind()()
+        fn2._bind()()
+        fn2.bind(obj,2,3)(44,55)
+        fn2._bind(obj,2,3)(44,55)
     </script>
     
 </body>
