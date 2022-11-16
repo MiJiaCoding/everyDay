@@ -24,9 +24,72 @@
         // const obj2 = {...obj1}
 
         // 4.递归
-        obj2.a = 2
-        obj2.arr[0] = 111
-        console.log(obj1,obj2)
+        // function cloneDeep(data){
+        //     const newData = Array.isArray(data) ? [] : {}
+
+        // }
+
+        // obj2.a = 2
+        // obj2.arr[0] = 111
+        // console.log(obj1,obj2)
+
+
+        // 单层引用类型的深拷贝
+        // function deepClone(target){
+        //     let cloneTarget = new target.constructor // target.constructor 看 target的类型是 Array 还是Object
+        //     for(let key in target){
+        //         if(target.hasOwnProperty(key)){
+        //             cloneTarget[key] = target[key]
+        //         }
+        //     }
+        //     return cloneTarget
+        // }
+
+        // 递归 深层循环引用
+        // function deepClone(target){
+        //     if (typeof target !== 'object')  return target
+        //     let cloneTarget = Array.isArray(target) ? [] : {}
+        //     // let cloneTarget = new target.constructor
+        //     for (let key in target ){
+        //         if(target.hasOwnProperty(key)){
+        //             cloneTarget[key] = deepClone(target[key])
+        //         }
+        //     }
+        //     return cloneTarget
+        // }
+
+        // 递归循环引用
+        function deepClone(target,weakMap = new WeakMap()){
+            if (target === null) return target 
+            if (target instanceof Date) return new Date(target)
+            if (target instanceof RegExp) return new RegExp(target)
+
+            if (typeof target !== 'object')  return target   
+            
+            if (weakMap.get(target)) return weakMap.get(target)
+            
+            let cloneTarget = new target.constructor
+            weakMap.set(target,cloneTarget)
+            for (let key in target ){
+                if(target.hasOwnProperty(key)){
+                    cloneTarget[key] = deepClone(target[key],weakMap)
+                }
+            }
+            return cloneTarget
+        }
+
+
+
+
+
+
+        let obj = { name: '米迦' ,address: {city: '北京'}}
+        obj.xxx = obj // 进行循环引用 此时深层循环递归的 会报错 Maximum call stack size exceeded
+        let newObj = deepClone(obj)
+        newObj.name = 'newObj换名字了!'
+        newObj.address.city='我换城市啦!'
+        console.log('newObj:',newObj)
+        console.log('obj:',obj)
 
 
     </script>
