@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+        pending(准备,待解决,进行中)
+        fulfilled(已完成,成功)
+        rejected(已拒绝,失败)
+         */
+        const p= new Promise((resolve,reject)=>{
+            // 调用函数resoleve() 传递参数 改变当前promise对象的结果
+            resolve('成功的结果')
+            // reject("失败的结果")
+        }) 
+
+        //then 方法 函数 参数1.函数  2.函数
+        // return 返回值是一个promise对象,state是pending
+        const t= p.then((value)=>{
+            //promise 的state是fulfilled 执行
+            console.log('成功时调用',value)
+        },(err)=>{
+            // promise 的state是rejected 执行
+            console.log("失败时调用",err)
+        })
+
+        // 注意：promise状态不改变,.then()不会执行
+
+        console.dir(p)
+
+        console.dir(t)
+        //链式操作 使得代码变得扁平化
+        //new Promise ((resolve,reject)=>{}).then().then()
+    </script>
+</body>
+</html>

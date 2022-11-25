@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+        pending(准备,待解决,进行中)
+        fulfilled(已完成,成功)
+        rejected(已拒绝,失败)
+         */
+        const p= new Promise((resolve,reject)=>{
+            // 调用函数resoleve() 传递参数 改变当前promise对象的结果
+            // resolve('成功的结果')
+            reject("失败的结果")
+        }) 
+
+        console.dir(p)
+    </script>
+</body>
+</html>

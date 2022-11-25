@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--通过ajax请求id，再根据id请求用户名-->
+    <script src="./jquery.js"></script>
+</head>
+<body>
+    <script>
+        // //发送ajax请求
+        // $.ajax({
+        //     type:"GET",
+        //     url:"./data1.json",
+        //     success:function(res){// response
+        //         const{id}=res //对象结构
+        //         console.log(res)
+        //     }
+        // })
+        // //思考：在哪里发送ajax请求？
+        // $.ajax({
+        //     type:"GET",
+        //     url:'./data2.json',
+        //     data:{id},
+        //     success:function(res){
+        //         console.log(res)
+        //     }
+        // })
+
+        // //上面是错误的 id没有定义，
+        // //因为后一次的请求依赖于上一次的请求结果
+
+
+
+
+
+         // 下面就是回调地狱
+         $.ajax({
+            type:"GET",
+            url:"./data1.json",
+            success:function(res){// response
+                const{id}=res //对象结构
+                console.log(res)
+
+
+
+                $.ajax({
+                    type:"GET",
+                    url:'./data2.json',
+                    data:{id}, //es6的简写 id:id
+                    success:function(res){
+                        const{username}=res
+                        console.log(res)
+
+                            //再根据username获取email
+                        $.ajax({
+                            type:'GET',
+                            url:'./data3.json',
+                            data:{username},
+                            success:function(res){
+                                console.log(res )
+                            }
+                        })
+
+                    }
+
+                })
+            }
+        })
+
+   
+
+   
+    </script>
+</body>
+</html>

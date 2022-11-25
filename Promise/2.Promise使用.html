@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*
+
+        Promise实例有两个重要的属性 1.state  2.resule
+        pending(准备,待解决,进行中)
+        fulfilled(已完成,成功)
+        rejected(已拒绝,失败)
+         */
+
+        /*
+        promise构造函数接收一个函数作为参数，该函数的两个参数
+        分别是resolve和reject,它们是两个函数，由javascript引擎
+        提供，不用自己部署
+         */
+        const p= new Promise((resolve,reject)=>{})
+        
+        console.dir(p)
+    </script>
+</body>
+</html>
