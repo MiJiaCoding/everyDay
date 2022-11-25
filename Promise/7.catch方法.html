@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p=new Promise((resolve,reject)=>{
+            // reject()
+            // console.log(a)//a未定义
+            throw new Error("出错了")
+        })
+
+        // 思考 ：catch中的参数函数在什么时候执行？
+        // 1.当promisse状态改成rejected的时候，被执行
+        // 2.当promise执行体中出现代码错误时，被执行
+        p.catch((reason)=>{
+            console.log('失败',reason)
+        })
+    </script>
+</body>
+</html>

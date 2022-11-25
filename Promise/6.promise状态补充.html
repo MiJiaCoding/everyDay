@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         // 注意：promise状态不改变,.then()里面不会执行
+        new Promise((resolve,rejecet)=>{
+            resolve('第一个then函数给我执行!!!')
+        }).then((value)=>{
+            console.log("成功",value)
+            // 使用return 可以将实例的状态改成fulfilled
+            // 不写return 默认返回undefined
+            return 123
+            //  如果这里的代码出错，会将实例的状态改成rejected
+            // console.log(a) //a未定义
+        },(reason)=>{
+            console.log("失败",reason)
+        }).then((value)=>{
+            console.log("成功",value)
+        },(reason)=>{
+            console.log("失败",reason)
+        })
+    </script>
+</body>
+</html>
