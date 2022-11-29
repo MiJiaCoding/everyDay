@@ -13,7 +13,7 @@
             tmp=str[left]
             str[left]=str[right]
             str[right]=tmp
-            left++
+            left++  
             right--
         }
         return str
