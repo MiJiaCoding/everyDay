@@ -59,8 +59,10 @@
     // }
 
     //方法1 toString()+replace 正则
+     //javascript的replace函数在替换数据时，默认只替换第一个。如果在替换的时候加上： / 替换内容 /g 就能实现全部替换
     let res1=a.toString().replace(/,/g,'')
     console.log("方法1 toString()+replace 正则:",res1)
+
 
     //方法2 循环拼接
     let res2=''
