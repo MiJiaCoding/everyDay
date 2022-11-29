@@ -4,7 +4,7 @@
             第二次反转，部分反转，以'.'为间隔反转，moc->com,oaituot->toutiao,www->www即可
     */
             // 循环，在.的地方分割然后存数组里，然后一个反循环拼接就完事了  
-            // 不适用join和 split
+            // 不使用join和 split
 
 
     const reverse_str = (str,left,right)=>{//可以不用right ，根据对称， right=str.length-1-i
