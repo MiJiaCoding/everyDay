@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>红宝书的对象、类</title>
 </head>
 <body>
     <script>
+        // 参照红宝书
         // let name = 'window上的'
         let person = new Object()
         person.name = 'Mijia'
@@ -30,11 +31,61 @@
             job : 'Student',
             sayName(){
                 console.log(this.name)
-                return "这是sayName的返回值,不写就是undefined'"
+                return "这是sayName的返回值,不写就是undefined"
             }
         }
         console.log(person1)
         console.log(person1.sayName())
+
+        // 1.数据属性
+        
+        let person2={}
+
+        
+        // Object.defineProperty(person2,'name',{value:"初始名字"})
+        // person2.name='名字修改'
+        // delete person2.name
+        // console.log(person2) // 初始名字    （默认writable:false）
+
+        Object.defineProperty(person2,'name',{
+            value:"初始名字",
+            writable:true,
+            configurable:true // 可以delete name属性
+        })
+        person2.name='名字修改'
+        console.log(person2)
+        delete person2.name
+        console.log(person2)
+        
+        
+
+        //2.访问器属性
+
+
+        console.log("访问器属性：")
+        // 例子：一年一个版本，year改变，edition也跟着变化
+        let book={
+            year_:2017,//_不希望从外部访问
+            edition:1
+        }
+        Object.defineProperty(book,"year",{
+            get(){
+                // return this===book //this指向book对象
+                return this.year_
+            },
+            set(newValue){
+                if(newValue>2017){
+                    this.year_=newValue
+                    this.edition+=newValue-2017
+                }
+            }
+        })
+
+        console.log("初始book:",book)
+        // book.year_=2019
+        book.year=2019
+        console.log(book)
+
 
     </script>
 </body>
