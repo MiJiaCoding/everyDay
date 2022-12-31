@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 引入require.js文件 -->
+    <!-- data-main 入口文件 设置为./js/main.js   src 是 ./lib/require.js-->
+    <script data-main="js/main" src="lib/require.js"></script>
+
+</head>
+<body>
+    <h1>hello,requirejs!</h1>
+    <!-- 测试使用jquery模块化的形式来实现给btn添加点击事件 -->
+    <button class="btn">按钮 </button>
+    <!-- <script src="./lib/jquery.min.js"></script> --> <!-- 先引入后执行 -->
+    <script>
+        $('.btn').click(function(){
+            alert('hello, 今天你做核酸了嘛？')
+        })
+    </script>
+
+    <!-- 如果引入顺序不对，会报错  requirejs就是解决这个问题-->
+    <!-- 浏览器是并发性的 要改成阻塞式-->
+    <!-- 10年前用的DWR技术：
+        DWR可以允许在浏览器里的代码使用运行在WEB服务器上的JAVA方法，就像它就在浏览器里一样。它包含两个主要的部分:
+        允许JavaScript从WEB服务器上一个遵循了AJAX原则的Servlet中获取数据.另外一方面一个JavaScript库可以帮助网站
+        开发人员轻松地利用获取的数据来动态改变网页的内容. -->
+
+    <script src="./lib/jquery.min.js"></script> <!-- 先执行后引入 -->
+
+</body>
+</html>
