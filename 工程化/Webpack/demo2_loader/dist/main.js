@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("我是米迦")})();

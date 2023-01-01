@@ -15,11 +15,11 @@
     <!-- 测试使用jquery模块化的形式来实现给btn添加点击事件 -->
     <button class="btn">按钮 </button>
     <!-- <script src="./lib/jquery.min.js"></script> --> <!-- 先引入后执行 -->
-    <script>
+    <!-- <script>
         $('.btn').click(function(){
             alert('hello, 今天你做核酸了嘛？')
         })
-    </script>
+    </script> -->
 
     <!-- 如果引入顺序不对，会报错  requirejs就是解决这个问题-->
     <!-- 浏览器是并发性的 要改成阻塞式-->
@@ -28,7 +28,7 @@
         允许JavaScript从WEB服务器上一个遵循了AJAX原则的Servlet中获取数据.另外一方面一个JavaScript库可以帮助网站
         开发人员轻松地利用获取的数据来动态改变网页的内容. -->
 
-    <script src="./lib/jquery.min.js"></script> <!-- 先执行后引入 -->
+    <!-- <script src="./lib/jquery.min.js"></script> 先执行后引入 -->
 
 </body>
 </html>
