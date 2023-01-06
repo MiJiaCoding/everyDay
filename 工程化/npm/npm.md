@@ -24,6 +24,14 @@
 
 
 
+ **强制解除创建的某个特定全局链接**
+
+> npm rm --global packageName
+
+
+
+
+
  **查看所有创建的全局链接名称**
 
 > npm ls --global --depth 0
@@ -47,10 +55,6 @@ aliases：别名
 
 
 
-
- **强制解除创建的某个特定全局链接**
-
-> npm rm --global packageName
 
 下图文件就是软链接：
 
