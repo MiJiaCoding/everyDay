@@ -15,8 +15,8 @@
         rejected(已拒绝,失败)
          */
         const p= new Promise((resolve,reject)=>{
-            // resoleve()：调用函数
-            resolve()// state 从pending 编程了resolve
+            // resolve()：调用函数
+            resolve()// state 从pending 变成了resolve
             //当然也可以调用rejected() 从pending编程rejeceted（）
             //但是只能从pending变成这两种中的一种  
         })
